@@ -17,6 +17,9 @@ RUN apt-get install -q -y imagemagick
 
 RUN go get -u -v github.com/kimmobrunfeldt/open-ocr
 
+# Copy cleaner to /usr/bin
+RUN cp $GOPATH/src/github.com/kimmobrunfeldt/open-ocr/cleaner.sh /usr/bin
+
 # build open-ocr-preprocessor binary and copy it to /usr/bin
 RUN cd $GOPATH/src/github.com/kimmobrunfeldt/open-ocr/cli-preprocessor && go build -v -o open-ocr-preprocessor && cp open-ocr-preprocessor /usr/bin
 
